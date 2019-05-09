@@ -44,9 +44,8 @@ def call(body) {
         agent 
         {
             node 
-            { 
-                echo  "${pipelineParams.jenkinsPodLabel}"
-                label "${pipelineParams.jenkinsPodLabel}"
+            {      
+                label "maven"
             }
         }
 
