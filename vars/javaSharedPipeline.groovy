@@ -27,15 +27,15 @@
   */
 def call(body) {
 
-        def pipelineParams = [:]
+        def config = [:]
 
         body.resolveStrategy = Closure.DELEGATE_FIRST
-        body.delegate = pipelineParams
+        body.delegate = config
         body()
 
-        def jenkinsPodLabel = pipelineParams.pipelineParams
-        def gitUrl = pipelineParams.gitUrl
-        def gitBranch = pipelineParams.gitBranch
+        def jenkinsPodLabel = config.pipelineParams
+        def gitUrl = config.gitUrl
+        def gitBranch = config.gitBranch
         //def runnerSonar = (pipelineParams.sonarEnv != "") ? false : true
         def rollout = true
 
