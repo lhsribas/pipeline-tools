@@ -45,7 +45,7 @@ def call(body) {
         {
             node 
             {      
-                label "maven"
+                label "master"
             }
         }
 
