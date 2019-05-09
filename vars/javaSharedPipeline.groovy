@@ -57,7 +57,7 @@ def call(body) {
                 {
                     echo "checkout  ${jenkinsPodLabel}"
                     echo ">>>>>>>>  ${gitUrl}"
-                    git branch: "${pipelineParams.gitBranch}", url: "${pipelineParams.gitUrl}"
+                    //git branch: "${pipelineParams.gitBranch}", url: "${pipelineParams.gitUrl}"
                 }
             }
 
