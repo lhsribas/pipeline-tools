@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-import hudson.model.*
+import hudson.FilePath
 
 /**
  * sharedPipeline.groovy
