@@ -30,7 +30,7 @@ def call(Map pipelineParams) {
     pipeline {
 
         environment {
-            def runnerSonar = (pipelineParams.sonarEnv == null) ? false : true
+            def runnerSonar = false //(pipelineParams.sonarEnv == null) ? false : true
             //def sonarQualityGatesProccess = load "sonarQualityGatesProccess.groovy"
             //def pomProccess = load "pomProccess.groovy"
             //def openshiftProccess = load "openshiftProccess.groovy"
