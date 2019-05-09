@@ -45,6 +45,7 @@ def call(body) {
         {
             node 
             { 
+                echo  "${pipelineParams.jenkinsPodLabel}"
                 label "${pipelineParams.jenkinsPodLabel}"
             }
         }
