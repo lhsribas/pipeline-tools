@@ -45,21 +45,13 @@ def call(Map pipelineParams) {
             }
         }
 
-        /**
-         * using the Timestamper plugin we can add timestamps to the console log
-         */
-        options 
-        {
-            timestamps()
-        }
-        
         stages 
         {
             stage("Initialize")
             {
                 steps
                 {
-                    echo "checkout"
+                    echo "checkout  ${runnerSonar}"
                     git branch: "${pipelineParams.gitBranch}", url: "${pipelineParams.gitUrl}"
                 }
             }
