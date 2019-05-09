@@ -29,7 +29,7 @@ def call(body) {
 
     def pipelineParams = [:]
         body.resolveStrategy = Closure.DELEGATE_FIRST
-        body.delegate = config
+        body.delegate = pipelineParams
         body()
 
     pipeline {
