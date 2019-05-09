@@ -25,10 +25,14 @@
   *     gitCredentials
   * }
   */
-def call(Map pipelineParams) {
+def call(body) {
+
+    def pipelineParams = [:]
+        body.resolveStrategy = Closure.DELEGATE_FIRST
+        body.delegate = config
+        body()
 
     pipeline {
-
         environment {
             def runnerSonar = false //(pipelineParams.sonarEnv == null) ? false : true
             //def sonarQualityGatesProccess = load "sonarQualityGatesProccess.groovy"
