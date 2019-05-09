@@ -56,6 +56,7 @@ def call(body) {
                 steps
                 {
                     echo "checkout  ${runnerSonar}"
+                    echo ">>>>>>>>  ${pipelineParams.gitUrl}"
                     git branch: "${pipelineParams.gitBranch}", url: "${pipelineParams.gitUrl}"
                 }
             }
