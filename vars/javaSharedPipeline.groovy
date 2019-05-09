@@ -25,18 +25,21 @@
   *     gitCredentials
   * }
   */
-def call(Map pipelineParams) {
+def call(body) {
 
-   
+        def pipelineParams = [:]
+
+        body.resolveStrategy = Closure.DELEGATE_FIRST
+        body.delegate = pipelineParams
+        body()
+
+        def jenkinsPodLabel = pipelineParams.pipelineParams
+        def gitUrl = pipelineParams.gitUrl
+        def gitBranch = pipelineParams.gitBranch
+        //def runnerSonar = (pipelineParams.sonarEnv != "") ? false : true
+        def rollout = true
 
     pipeline {
-        environment {
-            def runnerSonar = false //(pipelineParams.sonarEnv == null) ? false : true
-            //def sonarQualityGatesProccess = load "sonarQualityGatesProccess.groovy"
-            //def pomProccess = load "pomProccess.groovy"
-            //def openshiftProccess = load "openshiftProccess.groovy"
-            def rollout = true
-        }
 
         agent 
         {
@@ -52,8 +55,8 @@ def call(Map pipelineParams) {
             {
                 steps
                 {
-                    echo "checkout  ${runnerSonar}"
-                    echo ">>>>>>>>  ${pipelineParams.gitUrl}"
+                    echo "checkout  ${jenkinsPodLabel}"
+                    echo ">>>>>>>>  ${gitUrl}"
                     git branch: "${pipelineParams.gitBranch}", url: "${pipelineParams.gitUrl}"
                 }
             }
