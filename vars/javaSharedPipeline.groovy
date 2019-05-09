@@ -31,9 +31,9 @@ def standardJavaPipeline(Map pipelineParams) {
 
         environment {
             def runnerSonar = (pipelineParams.sonarEnv == null) ? false : true
-            def sonarQualityGatesProccess = load "sonarQualityGatesProccess.groovy"
-            def pomProccess = load "pomProccess.groovy"
-            def openshiftProccess = load "openshiftProccess.groovy"
+            //def sonarQualityGatesProccess = load "sonarQualityGatesProccess.groovy"
+            //def pomProccess = load "pomProccess.groovy"
+            //def openshiftProccess = load "openshiftProccess.groovy"
             def rollout = true
         }
 
@@ -59,11 +59,12 @@ def standardJavaPipeline(Map pipelineParams) {
             {
                 steps
                 {
-                    git branch: "${pipelineParams.gitBranch}", credentialsId: "${pipelineParams.gitCredentials}", url: "${pipelineParams.gitUrl}"
+                    echo "checkout"
+                    git branch: "${pipelineParams.gitBranch}", url: "${pipelineParams.gitUrl}"
                 }
             }
 
-            switch(pipelineParams.environment) 
+           /* switch(pipelineParams.environment) 
             {
                 case "dev":
 
@@ -98,10 +99,6 @@ def standardJavaPipeline(Map pipelineParams) {
                         }
                     }
 
-                    /*
-                     * Whether was passed permission to excute sonar the stage is active
-                     *
-                     */
                     if(runnerSonar){
                         stage('Sonar')
                         {
@@ -215,6 +212,7 @@ def standardJavaPipeline(Map pipelineParams) {
 
                 break;
             }
+            */
             
         }
     }
