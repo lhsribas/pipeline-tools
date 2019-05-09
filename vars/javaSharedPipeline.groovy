@@ -62,19 +62,14 @@ def call(body) {
                 }
             }
 
-           switch(pipelineParams.environment) 
+            stage("example")
             {
-                case "DEV":
-
-                    stage("example")
-                    {
-                        steps
-                        {
-                            echo "${pomProccess.getArtifactIdFromPom}"
-                        }
-                    }
-                break;
+                steps
+                {
+                    echo "${pomProccess.getArtifactIdFromPom}"
+                }
             }
+
         }
     }
 }
