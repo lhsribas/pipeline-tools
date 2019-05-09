@@ -25,7 +25,7 @@
   *     gitCredentials
   * }
   */
-def standardJavaPipeline(Map pipelineParams) {
+def call(Map pipelineParams) {
 
     pipeline {
 
