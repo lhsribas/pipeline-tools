@@ -41,7 +41,7 @@ def call(body) {
         //def runnerSonar = (pipelineParams.sonarEnv != "") ? false : true
         def rollout = true
 
-        def pomProccess = load 'pomProccess.groovy'
+        def pomProccess = load './vars/pomProccess.groovy'
 
     pipeline {
 
