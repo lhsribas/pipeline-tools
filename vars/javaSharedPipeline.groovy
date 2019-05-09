@@ -33,7 +33,7 @@ def call(body) {
         body.delegate = config
         body()
 
-        def jenkinsPodLabel = config.pipelineParams
+        def jenkinsPodLabel = config.jenkinsPodLabel
         def gitUrl = config.gitUrl
         def gitBranch = config.gitBranch
         //def runnerSonar = (pipelineParams.sonarEnv != "") ? false : true
