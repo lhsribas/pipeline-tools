@@ -45,7 +45,7 @@ def call(body) {
         {
             node 
             {      
-                label "master"
+                label "${config.jenkinsPodLabel}"
             }
         }
 
@@ -55,9 +55,8 @@ def call(body) {
             {
                 steps
                 {
-                    echo "checkout  ${jenkinsPodLabel}"
-                    echo ">>>>>>>>  ${gitUrl}"
-                    //git branch: "${pipelineParams.gitBranch}", url: "${pipelineParams.gitUrl}"
+                    echo "Git -> branch: ${config.gitBranch}, url: ${config.gitUrl}"
+                    git branch: "${config.gitBranch}", url: "${config.gitUrl}"
                 }
             }
 
