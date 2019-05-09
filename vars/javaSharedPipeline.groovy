@@ -25,12 +25,9 @@
   *     gitCredentials
   * }
   */
-def call(body) {
+def call(Map pipelineParams) {
 
-    def pipelineParams = [:]
-        body.resolveStrategy = Closure.DELEGATE_FIRST
-        body.delegate = pipelineParams
-        body()
+   
 
     pipeline {
         environment {
