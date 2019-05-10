@@ -35,10 +35,7 @@ def call(body) {
         body.delegate = config
         body()
 
-        def jenkinsPodLabel = config.jenkinsPodLabel
-        def gitUrl = config.gitUrl
-        def gitBranch = config.gitBranch
-        //def runnerSonar = (pipelineParams.sonarEnv != "") ? false : true
+        def runnerSonar = (config.sonarEnv != "") ? false : true
         def rollout = true
 
         /*
@@ -120,6 +117,42 @@ def call(body) {
                         mavenProccess.execPackageProject("${config.maven}", "${config.mavenSettingsConfig}")
                     }
                 }
+            }
+
+            if(runnerSonar)
+            {
+                stage('Sonar')
+                {
+                    steps
+                    {
+                        script
+                        {
+                            mavenProccess.execSonarQualityGate("${config.maven}", "${config.mavenSettingsConfig}", "${config.sonarEnv}")
+                        }
+                    }
+                }
+
+                stage('Quality Gate') 
+                {
+                    steps 
+                    {
+                        script{
+                            timeout(time: 5, unit: 'MINUTES') 
+                            {
+                                def _qg = sonarQualityGatesProccess.qualityGateResults("target/sonar/report-task.txt")
+                                
+                                if (_qg.status != 'OK') 
+                                {
+                                    error "Please review the quality of your code.\nstatus of analisys: ${qg.status}"
+                                }
+                            }	
+                        }
+                    }
+                }
+            } 
+            else 
+            {
+                info "Sonar quality gate is disabled"
             }
         }
     }

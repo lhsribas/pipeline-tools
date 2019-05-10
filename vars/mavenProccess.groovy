@@ -41,9 +41,25 @@ def execTestProject(def _maven, def _settings)
  */
 def execPackageProject(def _maven, def _settings)
 {
-     echo ">>>> maven ::: ${_maven} >>>>> maven_settings:::  ${_settings}"
+    echo ">>>> maven ::: ${_maven} >>>>> maven_settings:::  ${_settings}"
     withMaven( maven: "${_maven}", mavenSettingsConfig: "${_settings}") 
     {
         sh "mvn package -DskipTests"
     }
-}                           
+} 
+
+/*
+ *
+ */
+def execSonarQualityGate(def _maven, def _settings, def _SonarEnv)
+{
+    echo ">>>> maven ::: ${_maven} >>>>> maven_settings:::  ${_settings}"
+    withMaven( maven: "${pipelineParams.maven}", mavenSettingsConfig: "${pipelineParams.mavenSettingsConfig}") 
+    {
+        echo ">>>> SonarEnv ::: ${_SonarEnv}"
+        withSonarQubeEnv("${_SonarEnv}") 
+        {
+            sh 'mvn sonar:sonar'
+        }
+    } 
+}

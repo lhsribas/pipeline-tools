@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 
 /**
- * This method
+ * This method is reponsible to create a BuildConfig based in a image of Red Hat.
  */
 def execCreateImageBuilder(def _Cluster, def _Project, def _Application, def _ImageStream)
 {
@@ -19,11 +19,11 @@ def execCreateImageBuilder(def _Cluster, def _Project, def _Application, def _Im
 }
 
 /**
- * This method
+ * This method is responsible to copy the artefact do inside of BuildConfig and generates an image
  */
 def execStartBuild(def _Cluster, def _Project, def _Application, def _Version, def _Path)
 {
-    openshift.withCluster("${_Cluster}") 
+    openshift.withCluster("${_Cluster}") ß
     {
         openshift.withProject("${_Project}") 
         {
@@ -34,7 +34,7 @@ def execStartBuild(def _Cluster, def _Project, def _Application, def _Version, d
 }
 
 /**
- * This method
+ * This method is responsible to create a tag of an image
  */
 def execTagImage(def _Cluster, def _Project, def _Application, def _Version, def _Tag, def _Environment)
 {
@@ -50,7 +50,7 @@ def execTagImage(def _Cluster, def _Project, def _Application, def _Version, def
 }
 
 /**
- * This method
+ * This method is responsible to verify if exists the DeploymentConfig
  */
 def vefirifyExistsDeploymentConfig(def _Cluster, def _Project, def _Application)
 {
@@ -65,7 +65,7 @@ def vefirifyExistsDeploymentConfig(def _Cluster, def _Project, def _Application)
 }
 
 /**
- * This method
+ * This method is reponsible to create a DeploymentConfig
  */
 def createDeploymentConfig(def _Cluster, def _Project, def _Application, def _Template, def _TemplateParams)
 {
@@ -81,7 +81,7 @@ def createDeploymentConfig(def _Cluster, def _Project, def _Application, def _Te
 }
 
 /**
- * This method
+ * This method is responsible to execute the rollout of the image in the DeploymentConfig
  */
 def rolloutVersion(def _Cluster, def _Project, def _Application, def _Environment, def _Version)
 {
@@ -92,13 +92,10 @@ def rolloutVersion(def _Cluster, def _Project, def _Application, def _Environmen
             echo "Using project ::: ${openshift.project()}"
             // Getting the deploymentConfig
             def deploymentConfig = openshift.selector("dc", "${_Application}")
-            
             // Convert deploymentConfig to object and return it
             def dcObject = deploymentConfig.object()
-            
             //Change the tag of image into the deploymentConfig
             dcObject.spec.triggers[0].imageChangeParams.from.name="${_Application}:${_Environment}-${_Version}"
-            
             //Print the new value of tag image
             echo "${dcObject.spec.triggers[0].imageChangeParams.from.name}"
             
