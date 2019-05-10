@@ -9,5 +9,5 @@ def execCleanProject(def _maven, def _settings){
       //  sh "mvn clean"
     //}
 
-    echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> hello my name is luiz"
+    echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ${_maven} >>>>>>>>>> ${_settings}"
 }
