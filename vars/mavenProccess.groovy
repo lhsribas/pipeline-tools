@@ -2,7 +2,7 @@
 /*
  *
  */
-def build(def _maven, def _settings){
+def build(String _maven, String _settings){
     withMaven( maven: "${_maven}", mavenSettingsConfig: "${_settings}") {
         sh "mvn compile -DskipTests"
     }
@@ -11,7 +11,7 @@ def build(def _maven, def _settings){
 /*
  *
  */
-def test(def _maven, def _settings){
+def test(String _maven, String _settings){
     withMaven( maven: "${_maven}", mavenSettingsConfig: "${_settings}") {
         sh "mvn test"
     }
@@ -20,7 +20,7 @@ def test(def _maven, def _settings){
 /*
  *
  */
-def package(def _maven, def _settings){
+def package(String _maven, String _settings){
     withMaven( maven: "${_maven}", mavenSettingsConfig: "${_settings}") {
         sh "mvn package -DskipTests"
     }
