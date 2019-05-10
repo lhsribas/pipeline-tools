@@ -67,11 +67,14 @@ def call(body) {
             {
                 steps
                 {
-                    echo "Git -> branch: ${config.gitBranch}, url: ${config.gitUrl}"
-                    git branch: "${config.gitBranch}", url: "${config.gitUrl}"
+                    script
+                    {
+                        echo "Git -> branch: ${config.gitBranch}, url: ${config.gitUrl}"
+                        git branch: "${config.gitBranch}", url: "${config.gitUrl}"
 
-                    version = "teste"//pomProccess.getVersionFromPom()
-                    artifactId = "teste" //pomProccess.getArtifactIdFromPom()
+                        version = pomProccess.getVersionFromPom()
+                        artifactId = pomProccess.getArtifactIdFromPom()
+                    }
                 }
             }
 
@@ -79,7 +82,10 @@ def call(body) {
             {
                 steps
                 {
-                    mavenProccess.clean()
+                    script
+                    {
+                        mavenProccess.clean()
+                    }
                 }
             }
 
