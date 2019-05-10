@@ -1,54 +1,36 @@
 #!/usr/bin/env groovy
-
-/**
- * mavenProcess.groovy
- *
- */
-
 /*
  *
  */
-def call(Map methodParams){
-    buildStage(methodParams)
-    testStage(methodParams)
-    packageStage(methodParams)
-}
-
-/*
- *
- */
-def buildStage(Map methodParams){
-    stage('Compile'){
-        steps{    
-            withMaven( maven: "${methodParams.maven}", mavenSettingsConfig: "${methodParams.mavenSettingsConfig}") {
-                sh "mvn compile -DskipTests"
-            }
-        }
+def build(def _maven, def _settings){
+    withMaven( maven: "${_maven}", mavenSettingsConfig: "${_settings}") {
+        sh "mvn compile -DskipTests"
     }
 } 
 
 /*
  *
  */
-def testStage(Map methodParams){
-    stage('Test') {
-        steps {
-            withMaven( maven: "${methodParams.maven}", mavenSettingsConfig: "${methodParams.mavenSettingsConfig}") {
-                sh "mvn test"
-            }
-        }
+def test(def _maven, def _settings){
+    withMaven( maven: "${_maven}", mavenSettingsConfig: "${_settings}") {
+        sh "mvn test"
     }
 }
 
 /*
  *
  */
-def packageStage(Map methodParams){
-    stage('Package') {
-        steps {
-            withMaven( maven: "${methodParams.maven}", mavenSettingsConfig: "${methodParams.mavenSettingsConfig}") {
-                sh "mvn package -DskipTests"
-            }
-        }
+def package(def _maven, def _settings){
+    withMaven( maven: "${_maven}", mavenSettingsConfig: "${_settings}") {
+        sh "mvn package -DskipTests"
+    }
+}
+
+/*
+ *
+ */
+def clean(def _maven, def _settings){
+    withMaven( maven: "${_maven}", mavenSettingsConfig: "${_settings}") {
+        sh "mvn clean"
     }
 }

@@ -41,6 +41,16 @@ def call(body) {
         //def runnerSonar = (pipelineParams.sonarEnv != "") ? false : true
         def rollout = true
 
+        /*
+         * Controls the version of image
+         */
+        def version = null
+        
+        /*
+         * Controls the name of  Application
+         */
+        def artifactId = null
+
     pipeline {
 
         agent 
@@ -59,6 +69,9 @@ def call(body) {
                 {
                     echo "Git -> branch: ${config.gitBranch}, url: ${config.gitUrl}"
                     git branch: "${config.gitBranch}", url: "${config.gitUrl}"
+
+                    version = pomProccess.getVersionFromPom()
+                    artifactId = pomProccess.getArtifactIdFromPom()
                 }
             }
 
@@ -66,7 +79,7 @@ def call(body) {
             {
                 steps
                 {
-                    echo "${pomProccess.getArtifactIdFromPom()}"
+                    mavenProccess.clean()
                 }
             }
 
