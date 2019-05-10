@@ -78,7 +78,7 @@ def call(body) {
                 }
             }
 
-            stage("example")
+            stage("Clean Project")
             {
                 steps
                 {
@@ -89,6 +89,38 @@ def call(body) {
                 }
             }
 
+            stage("Test Project")
+            {
+                steps
+                {
+                    script
+                    {
+                        mavenProccess.execTestProject("${config.maven}", "${config.mavenSettingsConfig}")
+                    }
+                }
+            }
+
+            stage("Compile Project")
+            {
+                steps
+                {
+                    script
+                    {
+                        mavenProccess.execCompileProject("${config.maven}", "${config.mavenSettingsConfig}")
+                    }
+                }
+            }
+
+            stage("Package Project")
+            {
+                steps
+                {
+                    script
+                    {
+                        mavenProccess.execPackageProject("${config.maven}", "${config.mavenSettingsConfig}")
+                    }
+                }
+            }
         }
     }
 }

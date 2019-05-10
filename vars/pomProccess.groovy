@@ -24,4 +24,3 @@ def getGroupIdFromPom() {
 def getVersionFromPom() {
   readMavenPom().getVersion()
 }
-
