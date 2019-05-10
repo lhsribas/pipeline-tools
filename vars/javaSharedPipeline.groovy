@@ -70,8 +70,8 @@ def call(body) {
                     echo "Git -> branch: ${config.gitBranch}, url: ${config.gitUrl}"
                     git branch: "${config.gitBranch}", url: "${config.gitUrl}"
 
-                    version = ""//pomProccess.getVersionFromPom()
-                    artifactId = "" //pomProccess.getArtifactIdFromPom()
+                    version = "teste"//pomProccess.getVersionFromPom()
+                    artifactId = "teste" //pomProccess.getArtifactIdFromPom()
                 }
             }
 
