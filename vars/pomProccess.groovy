@@ -1,10 +1,5 @@
 #!/usr/bin/env groovy
 
-/**
- * projectObjectModelAttribute.groovy
- *
- */
-
 /*
  * This method get the ArtifactId of application developed in java, is necessary to install a pluguin called Pipeline Basic Steps on Jenkins.
  */

@@ -4,7 +4,7 @@
 /*
  *
  */
-def clean(def _maven, def _settings){
+def execCleanProject(def _maven, def _settings){
     //withMaven( maven: "${_maven}", mavenSettingsConfig: "${_settings}") {
       //  sh "mvn clean"
     //}

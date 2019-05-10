@@ -84,7 +84,7 @@ def call(body) {
                 {
                     script
                     {
-                        mavenProccess.clean()
+                        mavenProccess.execCleanProject("${config.maven}", "${config.mavenSettingsConfig}")
                     }
                 }
             }
