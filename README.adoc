@@ -1,6 +1,6 @@
 ## Pipeline Tools
 
-*Exmaple*
+*This project provide some global pipelines and some scripts to create to create a specific Jenkinsfiles*
 
 ----------------------------------------------
 
