@@ -46,11 +46,11 @@
 [width="100%",cols="2,5,^9",options="header"]
 |=======================================================================
 | Method | Parameters | Description
-| execCleanProject | def; def | This method execute the command *mvn clean*
-| execTestProject | def; def | This method execute the command *mvn test*
-| execCompileProject | def; def | This method execute the command *mvn compile -DskipTests* 
-| execPackageProject | def; def |This method execute the command *mvn package -DskipTests* 
-| execSonarQualityGate | def; def | This method execute the command *mvn sonar:sonar* 
+| execCleanProject | _maven; _settings | This method execute the command *mvn clean*
+| execTestProject | _maven; _settings | This method execute the command *mvn test*
+| execCompileProject | _maven; _settings | This method execute the command *mvn compile -DskipTests* 
+| execPackageProject | _maven; _settings |This method execute the command *mvn package -DskipTests* 
+| execSonarQualityGate | _maven; _settings | This method execute the command *mvn sonar:sonar* 
 |=======================================================================
 
 #### Parameters
