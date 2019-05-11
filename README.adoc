@@ -76,10 +76,12 @@
 
 #### Options
 
-[width="100%",cols="2,5,^1,2",options="header"]
+[width="100%",cols="2,5^1,9",options="header"]
 |=======================================================================
-| Method | Param | Description | Default | Type
-
+| Method | Description 
+| getArtifactIdFromPom | This method gets the name of application in the pom.xml
+| getGroupIdFromPom | This method gets the GroupdId of application in the pom.xml
+| getVersionFromPom | this method gets the version of application in the pom.xml
 |=======================================================================
 
 ### Sonar Quality Gate Proccess
