@@ -1,4 +1,8 @@
 #!/usr/bin/env groovy
+
+/*
+ * This method is responsible to control the events of sonar
+ */
 def qualityGateResults(def URLReport) {
 	
 	def props = readProperties file: URLReport
@@ -15,6 +19,6 @@ def qualityGateResults(def URLReport) {
 	def qualityGateUrl = "${SONAR_SERVER_URL}" + "/api/qualitygates/project_status?analysisId=" + ceTask.task.analysisId
 	def url = new URL(qualityGateUrl)
 	def result = new groovy.json.JsonSlurper().parse(url.newReader())
-    
+
 	result.projectStatus
 }

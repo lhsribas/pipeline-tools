@@ -1,0 +1,82 @@
+## Pipeline Tools
+
+*Exmaple*
+
+----------------------------------------------
+
+
+----------------------------------------------
+
+### Extends Java Shared Pipeline
+
+#### Options
+
+[width="100%",cols="2,5,^1,2",options="header"]
+|=======================================================================
+| Method | Param | Description | Default | Type
+
+|=======================================================================
+
+### Extends Node Shared Pipeline
+
+#### Options
+
+[width="100%",cols="2,5,^1,2",options="header"]
+|=======================================================================
+| Method | Param | Description | Default | Type
+
+|=======================================================================
+
+### Extends .Net Core Shared Pipeline
+
+#### Options
+
+[width="100%",cols="2,5,^1,2",options="header"]
+|=======================================================================
+| Method | Param | Description | Default | Type
+
+|=======================================================================
+
+### Maven Proccess
+
+#### Options
+
+[width="100%",cols="2,5",options="header"]
+|=======================================================================
+| Method | Description
+| execCleanProject | This method execute the command *mvn clean*
+| execTestProject | This method execute the command *mvn test*
+| execCompileProject | This method execute the command *mvn compile -DskipTests* 
+| execPackageProject | This method execute the command *mvn package -DskipTests* 
+| execSonarQualityGate | This method execute the command *mvn sonar:sonar* 
+|=======================================================================
+
+### Openshift Proccess
+
+#### Options
+
+[width="100%",cols="2,5,^1,2",options="header"]
+|=======================================================================
+| Method | Param | Description | Default | Type
+
+|=======================================================================
+
+### POM Proccess
+
+#### Options
+
+[width="100%",cols="2,5,^1,2",options="header"]
+|=======================================================================
+| Method | Param | Description | Default | Type
+
+|=======================================================================
+
+### Sonar Quality Gate Proccess
+
+#### Options
+
+[width="100%",cols="2,5,^1,2",options="header"]
+|=======================================================================
+| Method | Param | Description | Default | Type
+
+|=======================================================================
