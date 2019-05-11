@@ -41,14 +41,25 @@
 
 #### Options
 
-[width="100%",cols="2,5",options="header"]
+#### Methods
+
+[width="100%",cols="2,5,^9",options="header"]
 |=======================================================================
-| Method | Description
-| execCleanProject | This method execute the command *mvn clean*
-| execTestProject | This method execute the command *mvn test*
-| execCompileProject | This method execute the command *mvn compile -DskipTests* 
-| execPackageProject | This method execute the command *mvn package -DskipTests* 
-| execSonarQualityGate | This method execute the command *mvn sonar:sonar* 
+| Method | Parameters | Description
+| execCleanProject | def; def | This method execute the command *mvn clean*
+| execTestProject | def; def | This method execute the command *mvn test*
+| execCompileProject | def; def | This method execute the command *mvn compile -DskipTests* 
+| execPackageProject | def; def |This method execute the command *mvn package -DskipTests* 
+| execSonarQualityGate | def; def | This method execute the command *mvn sonar:sonar* 
+|=======================================================================
+
+#### Parameters
+
+[width="100%",cols="2,5,^9",options="header"]
+|=======================================================================
+| Parameters | Type | Description 
+| _maven | def | This parameter make reference to the maven instalation in Jenkins
+| _settings | def | This parameter make reference to the ID of cfg file maven configuration in Jenkins
 |=======================================================================
 
 ### Openshift Proccess
