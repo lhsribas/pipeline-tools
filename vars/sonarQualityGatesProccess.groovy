@@ -3,9 +3,9 @@
 /*
  * This method is responsible to control the events of sonar
  */
-def qualityGateResults(def URLReport) {
+def qualityGateResults(def _URLReport) {
 	
-	def props = readProperties file: URLReport
+	def props = readProperties file: _URLReport
 	SONAR_CE_TASK_URL = props.ceTaskUrl
 	SONAR_SERVER_URL = props.serverUrl
 	

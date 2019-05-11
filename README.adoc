@@ -66,10 +66,31 @@
 
 #### Options
 
-[width="100%",cols="2,5,^1,2",options="header"]
+[width="100%",cols="2,5,^9",options="header"]
 |=======================================================================
-| Method | Param | Description | Default | Type
+| Method | Parameters | Description
+| execCreateImageBuilder | _Cluster, _Project, _Application, _ImageStream | TO DO
+| execStartBuild |  _Cluster, _Project, _Application, _Version, _Path | TO DO
+| execTagImage | _Cluster, _Project, _Application, _Version, _Tag, _Environment | TO DO
+| vefirifyExistsDeploymentConfig | _Cluster, _Project, _Application | TO DO
+| createDeploymentConfig |  _Cluster, _Project, _Application, _Template, _TemplateParams | TO DO
+| rolloutVersion |  _Cluster, _Project, _Application, _Environment, _Version | TO DO
+|=======================================================================
 
+#### Parameters
+
+[width="100%",cols="2,5,^9",options="header"]
+|=======================================================================
+| Parameters | Type | Description 
+| _Cluster | def | TO DO
+| _Project | def | TO DO
+| _Application | def | TO DO
+| _Version | def | TO DO
+| _ImageStream | def | TO DO
+| _Path | def | TO DO
+| _Environment | def | TO DO
+| _Template | def | TO DO
+| _TemplateParams | def | TO DO
 |=======================================================================
 
 ### POM Proccess
@@ -84,12 +105,20 @@
 | getVersionFromPom | this method gets the version of application in the pom.xml
 |=======================================================================
 
-### Sonar Quality Gate Proccess
+### Sonar Quality Gates Proccess
 
 #### Options
 
 [width="100%",cols="2,5,^1,2",options="header"]
 |=======================================================================
-| Method | Param | Description | Default | Type
+| Method | Param | Description
+| qualityGateResults | _URLReport | TO DO
+|=======================================================================
 
+#### Parameters
+
+[width="100%",cols="2,5,^9",options="header"]
+|=======================================================================
+| Parameters | Type | Description 
+| _URLReport | def | TO DO
 |=======================================================================
