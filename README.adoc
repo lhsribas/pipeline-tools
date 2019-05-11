@@ -109,7 +109,7 @@
 
 #### Options
 
-[width="100%",cols="2,5,^1,2",options="header"]
+[width="100%",cols="2,5,^9",options="header"]
 |=======================================================================
 | Method | Param | Description
 | qualityGateResults | _URLReport | TO DO
