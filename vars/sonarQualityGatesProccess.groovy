@@ -3,9 +3,20 @@
 /*
  * This method is responsible to control the events of sonar
  */
-def qualityGateResults(def _URLReport) {
-	
-	def props = readProperties file: _URLReport
+def qualityGateResults(def _timeout, def _URLReport) {
+    timeout(time: _timeout, unit: 'MINUTES') 
+    {
+        def qg = qualityGatesRunner(_URLReport)
+        
+        if (qg.status != 'OK') {
+            error "Fail, Please improve the quality of your code \nAnalisys Status: ${qg.status}"
+        }
+    }	
+}
+
+def qualityGatesRunner(def _URLReport)
+{
+    def props = readProperties file: _URLReport
 	SONAR_CE_TASK_URL = props.ceTaskUrl
 	SONAR_SERVER_URL = props.serverUrl
 	

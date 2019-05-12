@@ -137,15 +137,7 @@ def call(body) {
                     steps 
                     {
                         script{
-                            timeout(time: 5, unit: 'MINUTES') 
-                            {
-                                def _qg = sonarQualityGatesProccess.qualityGateResults("target/sonar/report-task.txt")
-                                
-                                if (_qg.status != 'OK') 
-                                {
-                                    error "Please review the quality of your code.\nstatus of analisys: ${qg.status}"
-                                }
-                            }	
+                            sonarQualityGatesProccess.qualityGateResults(5,"target/sonar/report-task.txt")
                         }
                     }
                 }
